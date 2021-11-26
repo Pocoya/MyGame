@@ -13,16 +13,16 @@ public class Movement extends MyGame{
     }
 
     public void move(){
-        if(Gdx.input.isKeyPressed(Input.Keys.D))
+        if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))
         {
             posX += Gdx.graphics.getDeltaTime() * 100;
-        } else if(Gdx.input.isKeyPressed(Input.Keys.A))
+        } else if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT))
         {
             posX -= Gdx.graphics.getDeltaTime() * 100;
-        }  else if(Gdx.input.isKeyPressed(Input.Keys.W))
+        }  else if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP))
         {
             posY += Gdx.graphics.getDeltaTime() * 100;
-        } else if(Gdx.input.isKeyPressed(Input.Keys.S))
+        } else if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN))
         {
             posY -= Gdx.graphics.getDeltaTime() * 100;
         }
