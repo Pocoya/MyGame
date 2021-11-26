@@ -10,20 +10,18 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MyGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	int posX = 0;
-	int posY = 0;
+	int posX = 500;
+	int posY = 50;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-
-
+		img = new Texture("shooter.jpeg");
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(0, 1, 1, 1);
+		ScreenUtils.clear(0, 0, 0, 1);
 		batch.begin();
 
 		if(Gdx.input.isKeyPressed(Input.Keys.D))
