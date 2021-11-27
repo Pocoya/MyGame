@@ -1,34 +1,27 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.Game;
+public class MyGame extends Game {
+	GameScreen gameScreen;
 
-public class MyGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-
-	private Movement movement;
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("shooter.jpeg");
-		movement = new Movement();
-	}
-
-	@Override
-	public void render () {
-		ScreenUtils.clear(0, 0, 0, 1);
-		batch.begin();
-		movement.move();
-		batch.draw(img, movement.getPosX(), movement.getPosY());
-		batch.end();
+		gameScreen = new GameScreen();
+		setScreen(gameScreen);
 	}
 
 	@Override
 	public void dispose () {
-		batch.dispose();
-		img.dispose();
+		gameScreen.dispose();
+	}
+
+	@Override
+	public void render () {
+		super.render();
+	}
+
+	@Override
+	public void resize(int width, int height){
+		gameScreen.resize(width, height);
 	}
 }

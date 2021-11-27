@@ -6,25 +6,29 @@ import com.badlogic.gdx.Input;
 public class Movement extends MyGame{
     int posX = 500;
     int posY = 50;
+
+    private int points;
+    HighScore highScore;
     public Movement(){
         super();
+        highScore = new HighScore();
+        points = 0;
     }
 
     public void move(){
-        if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-        {
-            posX += Gdx.graphics.getDeltaTime() * 130;
-        } else if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT))
-        {
-            posX -= Gdx.graphics.getDeltaTime() * 100;
-        }  else if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP))
-        {
-            posY += Gdx.graphics.getDeltaTime() * 130;
-        } else if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN))
-        {
-            posY -= Gdx.graphics.getDeltaTime() * 100;
+        if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            posX += Gdx.graphics.getDeltaTime() * 200;
+            points++;
+        } else if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            posX -= Gdx.graphics.getDeltaTime() * 200;
+            points++;
+        }  else if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            posY += Gdx.graphics.getDeltaTime() * 200;
+        } else if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            posY -= Gdx.graphics.getDeltaTime() * 200;
         }
 
+        highScore.updateScore(points);
         //The shooter's limitation
         if(getPosX() >= 1000){
             posX = 1000;
