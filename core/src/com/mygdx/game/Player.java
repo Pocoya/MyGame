@@ -32,11 +32,11 @@ public class Player extends MyGame
         movement.move(speed);
         shooter.setPosition(movement.getPosX(), movement.getPosY());
         fireTime += deltaTime;
-        if(Gdx.input.isKeyPressed(Input.Keys.E) && fireTime >= fireRate)
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) && fireTime >= fireRate)
         {
             //INSTANTIATE BULLET
             fireTime = 0;
-            GameScreen.bullets.add(new Bullet(movement.getPosX(), movement.getPosY()));
+            GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/2, movement.getPosY() + (int)shooter.getHeight()/2));
 
         }
     }
