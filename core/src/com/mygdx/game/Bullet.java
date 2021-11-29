@@ -28,7 +28,7 @@ public class Bullet extends MyGame
         posY += 150 * deltaTime;
         bullet.setPosition(bullet.getX(), posY);
 
-        if(timeAlive > 2)
+        if(timeAlive > 3)
         {
             isAlive = false;
         }

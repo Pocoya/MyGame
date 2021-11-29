@@ -13,6 +13,10 @@ public class Player extends MyGame
     int health;
     Sprite shooter;
 
+    final float fireRate = 1;
+    float fireTime = fireRate;
+
+
 
     Movement movement;
 
@@ -27,10 +31,11 @@ public class Player extends MyGame
     {
         movement.move(speed);
         shooter.setPosition(movement.getPosX(), movement.getPosY());
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.E))
+        fireTime += deltaTime;
+        if(Gdx.input.isKeyPressed(Input.Keys.E) && fireTime >= fireRate)
         {
             //INSTANTIATE BULLET
+            fireTime = 0;
             GameScreen.bullets.add(new Bullet(movement.getPosX(), movement.getPosY()));
 
         }
