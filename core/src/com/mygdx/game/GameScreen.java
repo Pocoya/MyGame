@@ -43,7 +43,6 @@ public class GameScreen implements Screen {
         background = new Texture("background.jpeg");
         backgrTimer = 0;
         batch = new SpriteBatch();
-
         highScore = new HighScore();
         font = new BitmapFont();
         player = new Player();
@@ -65,9 +64,7 @@ public class GameScreen implements Screen {
                 tmp.add(i);
             }
         }
-        for(int i = 0; i < tmp.size();i++)
-        {
-            int j = tmp.get(i);
+        for (int j : tmp) {
             bullets.remove(j);
         }
     }

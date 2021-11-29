@@ -9,22 +9,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Player extends MyGame
 {
-    int speed = 200;
-    int health;
+    private int speed = 200;
+    private int health;
+    private int points;
     Sprite shooter;
 
     final float fireRate = 1;
     float fireTime = fireRate;
 
-
-
     Movement movement;
-
+    HighScore highScore;
 
     public Player()
     {
         movement = new Movement();
         shooter = new Sprite(new Texture("shooter.jpeg"));
+        highScore = new HighScore();
     }
 
     public void Update(float deltaTime)
@@ -37,7 +37,8 @@ public class Player extends MyGame
             //INSTANTIATE BULLET
             fireTime = 0;
             GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/2, movement.getPosY() + (int)shooter.getHeight()/2));
-
+            points++;
+            highScore.updateScore(points);
         }
     }
 

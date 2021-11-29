@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Bullet extends MyGame
 {
     Sprite bullet;
-    int posY;
-    float timeAlive;
+    private int posY;
+    private float timeAlive;
 
     boolean isAlive = true;
 
