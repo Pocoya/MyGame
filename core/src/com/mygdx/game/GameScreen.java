@@ -18,7 +18,6 @@ public class GameScreen implements Screen {
     private final Viewport viewport;
 
     //Graphics
-    private final Sprite shooter;
     private final SpriteBatch batch;
     private final Texture background;
     private BitmapFont font;
@@ -31,8 +30,8 @@ public class GameScreen implements Screen {
     private final int WORLD_HEIGHT = 650;
 
     //Movement & Points instances
-    Movement movement;
     HighScore highScore;
+    Player player;
 
     GameScreen(){
         camera = new OrthographicCamera();
@@ -40,17 +39,16 @@ public class GameScreen implements Screen {
         background = new Texture("background.jpeg");
         backgrTimer = 0;
         batch = new SpriteBatch();
-        shooter = new Sprite(new Texture("shooter.jpeg"));
-        movement = new Movement();
+
         highScore = new HighScore();
         font = new BitmapFont();
+        player = new Player();
     }
 
     // Put all logic here
     void Update(float deltaTime)
     {
-        shooter.setPosition(movement.getPosX(), movement.getPosY());
-        movement.move();
+        player.Update(deltaTime);
     }
 
     // Put all drawings here
@@ -66,9 +64,8 @@ public class GameScreen implements Screen {
         }
         batch.draw(background, 0, -backgrTimer, WORLD_WIDTH, WORLD_HEIGHT);
         batch.draw(background, 0, -backgrTimer + WORLD_HEIGHT, WORLD_WIDTH, WORLD_HEIGHT);
-        shooter.setSize(60, 70);
-        shooter.setColor(Color.PINK);
-        shooter.draw(batch);
+
+        player.Render(deltaTime, batch);
 
         font.setColor(Color.PINK);
         font.draw(batch, "Points: " + highScore.getScore(), 1017, 642);

@@ -4,9 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
 public class Movement extends MyGame{
+
     int posX = 500;
     int posY = 50;
-    int speed = 200;
 
     private int points;
     HighScore highScore;
@@ -16,20 +16,21 @@ public class Movement extends MyGame{
         points = 0;
     }
 
-    public void move()
+    public void move(int aSpeed)
     {
         float deltaTime = Gdx.graphics.getDeltaTime();
         if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            posX += deltaTime * speed;
+            posX += deltaTime * aSpeed;
             points++;
         } else if(Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            posX -= deltaTime * speed;
+            posX -= deltaTime * aSpeed;
             points++;
         }  else if(Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            posY += deltaTime * speed;
+            posY += deltaTime * aSpeed;
         } else if(Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            posY -= deltaTime * speed;
+            posY -= deltaTime * aSpeed;
         }
+
         highScore.updateScore(points);
         //The shooter's limitation
         if(getPosX() >= 1000){

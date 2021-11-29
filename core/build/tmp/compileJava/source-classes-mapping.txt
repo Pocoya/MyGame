@@ -1,5 +1,7 @@
 com/mygdx/game/HighScore.java
  com.mygdx.game.HighScore
+com/mygdx/game/Player.java
+ com.mygdx.game.Player
 com/mygdx/game/MyGame.java
  com.mygdx.game.MyGame
 com/mygdx/game/Movement.java
