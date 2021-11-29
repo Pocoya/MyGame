@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -15,6 +16,7 @@ public class Player extends MyGame
 
     Movement movement;
 
+
     public Player()
     {
         movement = new Movement();
@@ -25,10 +27,18 @@ public class Player extends MyGame
     {
         movement.move(speed);
         shooter.setPosition(movement.getPosX(), movement.getPosY());
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.E))
+        {
+            //INSTANTIATE BULLET
+            GameScreen.bullets.add(new Bullet());
+
+        }
     }
 
     public void Render(float deltaTime, SpriteBatch batch)
     {
+
         shooter.setSize(60, 70);
         shooter.setColor(Color.PINK);
         shooter.draw(batch);

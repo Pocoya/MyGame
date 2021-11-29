@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import java.util.ArrayList;
+
 public class GameScreen implements Screen {
 
     //Screen
@@ -33,6 +35,8 @@ public class GameScreen implements Screen {
     HighScore highScore;
     Player player;
 
+    public static ArrayList<Bullet> bullets = new ArrayList<>();
+
     GameScreen(){
         camera = new OrthographicCamera();
         viewport = new StretchViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
@@ -49,6 +53,10 @@ public class GameScreen implements Screen {
     void Update(float deltaTime)
     {
         player.Update(deltaTime);
+        for (Bullet bul : bullets)
+        {
+            bul.Update(deltaTime);
+        }
     }
 
     // Put all drawings here
@@ -66,6 +74,11 @@ public class GameScreen implements Screen {
         batch.draw(background, 0, -backgrTimer + WORLD_HEIGHT, WORLD_WIDTH, WORLD_HEIGHT);
 
         player.Render(deltaTime, batch);
+
+        for (Bullet bul : bullets)
+        {
+            bul.Render(deltaTime, batch);
+        }
 
         font.setColor(Color.PINK);
         font.draw(batch, "Points: " + highScore.getScore(), 1017, 642);
