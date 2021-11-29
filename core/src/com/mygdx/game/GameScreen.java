@@ -46,9 +46,19 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
     }
 
+    // Put all logic here
+    void Update(float deltaTime)
+    {
+        shooter.setPosition(movement.getPosX(), movement.getPosY());
+        movement.move();
+    }
+
+    // Put all drawings here
     @Override
     public void render(float deltaTime) {
         batch.begin();
+        Update(deltaTime);
+
         //scrolling background
         backgrTimer++;
         if(backgrTimer % WORLD_HEIGHT == 0){
@@ -56,13 +66,13 @@ public class GameScreen implements Screen {
         }
         batch.draw(background, 0, -backgrTimer, WORLD_WIDTH, WORLD_HEIGHT);
         batch.draw(background, 0, -backgrTimer + WORLD_HEIGHT, WORLD_WIDTH, WORLD_HEIGHT);
-        shooter.setPosition(movement.getPosX(), movement.getPosY());
-        movement.move();
-        shooter.draw(batch);
         shooter.setSize(60, 70);
         shooter.setColor(Color.PINK);
-        font.draw(batch, "Points: " + highScore.getScore(), 1017, 642);
+        shooter.draw(batch);
+
         font.setColor(Color.PINK);
+        font.draw(batch, "Points: " + highScore.getScore(), 1017, 642);
+
         batch.end();
     }
 
