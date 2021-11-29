@@ -31,7 +31,7 @@ public class Player extends MyGame
         if(Gdx.input.isKeyJustPressed(Input.Keys.E))
         {
             //INSTANTIATE BULLET
-            GameScreen.bullets.add(new Bullet());
+            GameScreen.bullets.add(new Bullet(movement.getPosX(), movement.getPosY()));
 
         }
     }

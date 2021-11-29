@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -8,22 +9,34 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Bullet extends MyGame
 {
     Sprite bullet;
-    int posY = 50;
-    public Bullet()
+    int posY;
+    float timeAlive;
+
+    boolean isAlive = true;
+
+    public Bullet(int startPosX, int startPosY)
     {
         bullet = new Sprite(new Texture(("bullet.jpeg")));
+        posY = startPosY;
+        bullet.setPosition(startPosX, posY);
     }
 
     public void Update(float deltaTime)
     {
+        timeAlive += deltaTime;
         // fly straight up, delete if not hit in long time.
         posY += 150 * deltaTime;
         bullet.setPosition(bullet.getX(), posY);
+
+        if(timeAlive > 2)
+        {
+            isAlive = false;
+        }
     }
 
     public void Render(float deltaTime, SpriteBatch batch)
     {
-        bullet.setScale(0.1f);
+        bullet.setSize(10,10);
         bullet.setColor(Color.GRAY);
         bullet.draw(batch);
     }
