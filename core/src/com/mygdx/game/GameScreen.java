@@ -35,6 +35,8 @@ public class GameScreen implements Screen {
     HighScore highScore;
     Player player;
 
+    StarGenerator gen;
+
     public static ArrayList<Bullet> bullets = new ArrayList<>();
 
     GameScreen(){
@@ -46,6 +48,8 @@ public class GameScreen implements Screen {
         highScore = new HighScore();
         font = new BitmapFont();
         player = new Player();
+
+        gen = new StarGenerator(new Texture("bullet.jpeg"), WORLD_WIDTH, 25);
     }
 
     // Put all logic here
@@ -53,6 +57,7 @@ public class GameScreen implements Screen {
     {
         ArrayList<Integer> tmp = new ArrayList<>();
         player.Update(deltaTime);
+        gen.Update(deltaTime);
         for (Bullet bul : bullets)
         {
             if(bul.isAlive) bul.Update(deltaTime);
@@ -74,15 +79,16 @@ public class GameScreen implements Screen {
     public void render(float deltaTime) {
         batch.begin();
         Update(deltaTime);
-
         //scrolling background
         backgrTimer++;
         if(backgrTimer % WORLD_HEIGHT == 0){
             backgrTimer = 0;
         }
-        batch.draw(background, 0, -backgrTimer, WORLD_WIDTH, WORLD_HEIGHT);
-        batch.draw(background, 0, -backgrTimer + WORLD_HEIGHT, WORLD_WIDTH, WORLD_HEIGHT);
+        //batch.draw(background, 0, -backgrTimer, WORLD_WIDTH, WORLD_HEIGHT);
+        //batch.draw(background, 0, -backgrTimer + WORLD_HEIGHT, WORLD_WIDTH, WORLD_HEIGHT);
+        batch.draw(background, 0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
+        gen.Render(batch);
         player.Render(deltaTime, batch);
 
         for (Bullet bul : bullets)

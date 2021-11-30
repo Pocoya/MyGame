@@ -23,15 +23,23 @@ public class BackGroundStars
         myPosX = aNewPosX;
         myVelocity = aNewVel;
         myColor = aColor;
+        myTexture.setSize(5, 5);
+        myTexture.setPosition(myPosX, myPosY);
     }
 
+
+    public float GetPosY()
+    {
+        return myPosY;
+    }
     public void Update(float deltaTime)
     {
         myPosY += myVelocity * deltaTime;
+        myTexture.setPosition(myTexture.getX(), myPosY);
     }
 
     public void Draw(SpriteBatch aSpriteBatch)
     {
-        aSpriteBatch.draw(myTexture, myPosX, myPosY);
+        myTexture.draw(aSpriteBatch);
     }
 }

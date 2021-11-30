@@ -1,7 +1,11 @@
-com/mygdx/game/Player.java
- com.mygdx.game.Player
 com/mygdx/game/HighScore.java
  com.mygdx.game.HighScore
+com/mygdx/game/StarGenerator.java
+ com.mygdx.game.StarGenerator
+com/mygdx/game/BackGroundStars.java
+ com.mygdx.game.BackGroundStars
+com/mygdx/game/Player.java
+ com.mygdx.game.Player
 com/mygdx/game/MyGame.java
  com.mygdx.game.MyGame
 com/mygdx/game/Movement.java
