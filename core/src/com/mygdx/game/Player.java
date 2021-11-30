@@ -36,7 +36,7 @@ public class Player extends MyGame
         {
             //INSTANTIATE BULLET
             fireTime = 5;
-            GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/2, movement.getPosY() + (int)shooter.getHeight()/2));
+            GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/5, movement.getPosY() + (int)shooter.getHeight()/2));
             points++;
             highScore.updateScore(points);
         }

@@ -23,7 +23,7 @@ public class BackGroundStars
         myPosX = aNewPosX;
         myVelocity = aNewVel;
         myColor = aColor;
-        myTexture.setSize(5, 5);
+        myTexture.setSize(35, 35);
         myTexture.setPosition(myPosX, myPosY);
     }
 

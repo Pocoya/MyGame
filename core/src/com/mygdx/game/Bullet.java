@@ -16,7 +16,7 @@ public class Bullet extends MyGame
 
     public Bullet(int startPosX, int startPosY)
     {
-        bullet = new Sprite(new Texture(("bullet.jpeg")));
+        bullet = new Sprite(new Texture(("bu.png")));
         posY = startPosY;
         bullet.setPosition(startPosX, posY);
     }
@@ -28,7 +28,7 @@ public class Bullet extends MyGame
         posY += 150 * deltaTime;
         bullet.setPosition(bullet.getX(), posY);
 
-        if(timeAlive > 3)
+        if(timeAlive > 4)
         {
             isAlive = false;
         }
@@ -36,7 +36,7 @@ public class Bullet extends MyGame
 
     public void Render(float deltaTime, SpriteBatch batch)
     {
-        bullet.setSize(10,10);
+        bullet.setSize(35,20);
         bullet.setColor(Color.GRAY);
         bullet.draw(batch);
     }

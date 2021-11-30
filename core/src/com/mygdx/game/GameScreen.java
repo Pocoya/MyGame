@@ -49,7 +49,7 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
         player = new Player();
 
-        gen = new StarGenerator(new Texture("bullet.jpeg"), WORLD_WIDTH, 25);
+        gen = new StarGenerator(new Texture("star.jpeg"), WORLD_WIDTH, 25);
     }
 
     // Put all logic here
