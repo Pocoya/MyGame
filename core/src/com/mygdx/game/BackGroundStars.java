@@ -12,8 +12,6 @@ public class BackGroundStars
     private float myPosX;
     private int myVelocity;
 
-
-
     Color myColor;
 
     public BackGroundStars(Texture aTexture, float aNewPosX, float aNewPosY, int aNewVel, Color aColor)

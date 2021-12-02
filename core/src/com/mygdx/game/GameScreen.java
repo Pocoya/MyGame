@@ -34,7 +34,6 @@ public class GameScreen implements Screen {
     //Movement & Points instances
     HighScore highScore;
     Player player;
-
     StarGenerator gen;
 
     public static ArrayList<Bullet> bullets = new ArrayList<>();
@@ -48,7 +47,6 @@ public class GameScreen implements Screen {
         highScore = new HighScore();
         font = new BitmapFont();
         player = new Player();
-
         gen = new StarGenerator(new Texture("star.jpeg"), WORLD_WIDTH, 25);
     }
 
@@ -98,7 +96,6 @@ public class GameScreen implements Screen {
 
         font.setColor(Color.PINK);
         font.draw(batch, "Points: " + highScore.getScore(), 1017, 642);
-
         batch.end();
     }
 

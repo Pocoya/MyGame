@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import javax.swing.*;
+import java.io.File;
+
 public class Player extends MyGame
 {
     private int speed = 200;
@@ -17,15 +20,26 @@ public class Player extends MyGame
     final float fireRate = 1;
     float fireTime = fireRate;
 
+    private String playerName;
+
     Movement movement;
     HighScore highScore;
+    FilePoints file;
 
     public Player()
     {
         movement = new Movement();
         shooter = new Sprite(new Texture("shooter.jpeg"));
         highScore = new HighScore();
+        file = new FilePoints();
+        //pName();
     }
+
+    /*
+    public void pName(){
+        playerName = JOptionPane.showInputDialog("Name: ");
+    }
+     */
 
     public void Update(float deltaTime)
     {
