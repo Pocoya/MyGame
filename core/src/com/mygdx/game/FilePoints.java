@@ -19,10 +19,11 @@ public class FilePoints {
         }
     }
 
-    public void writeToFile(int score){
+    public void writeToFile(String playerName, int score){
         try {
-            try (PrintWriter fw = new PrintWriter(new FileWriter(fileName))){
-                fw.print(score);
+            try (PrintWriter fw = new PrintWriter(new FileWriter(fileName, true))){
+                fw.write("\t" + playerName + "\t\t"+ score + "\n");
+                fw.write("------------------------- \n");
             }
         } catch (Exception e) {
             e.printStackTrace();

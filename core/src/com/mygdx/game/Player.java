@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import javax.swing.*;
 import java.io.File;
 
-public class Player extends MyGame
-{
+public class Player extends MyGame {
     private int speed = 200;
     private int health;
     private int points;
@@ -26,28 +25,23 @@ public class Player extends MyGame
     HighScore highScore;
     FilePoints file;
 
-    public Player()
-    {
+    public Player() {
         movement = new Movement();
         shooter = new Sprite(new Texture("shooter.jpeg"));
         highScore = new HighScore();
         file = new FilePoints();
-        //pName();
+        getPlayerName();
     }
 
-    /*
-    public void pName(){
-        playerName = JOptionPane.showInputDialog("Name: ");
+    public String getPlayerName(){
+        return playerName = JOptionPane.showInputDialog("Name: ");
     }
-     */
 
-    public void Update(float deltaTime)
-    {
+    public void Update(float deltaTime) {
         movement.move(speed);
         shooter.setPosition(movement.getPosX(), movement.getPosY());
         fireTime += deltaTime;
-        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) && fireTime >= fireRate)
-        {
+        if(Gdx.input.isKeyPressed(Input.Keys.SPACE) && fireTime >= fireRate) {
             //INSTANTIATE BULLET
             fireTime = 0;
             GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/5, movement.getPosY() + (int)shooter.getHeight()/2));
@@ -55,22 +49,19 @@ public class Player extends MyGame
             highScore.updateScore(points);
         }
 
-        if(Gdx.input.isKeyPressed(Input.Keys.P)) {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.P)) {
             highScore.updateScore(points);
-            highScore.Write();
+            highScore.write(playerName, points);
         }
     }
 
-    public void Render(float deltaTime, SpriteBatch batch)
-    {
-
+    public void Render(float deltaTime, SpriteBatch batch) {
         shooter.setSize(60, 70);
         shooter.setColor(Color.PINK);
         shooter.draw(batch);
     }
 
-    public void TakeDamage(int aDamage)
-    {
+    public void TakeDamage(int aDamage) {
         health -= aDamage;
     }
 

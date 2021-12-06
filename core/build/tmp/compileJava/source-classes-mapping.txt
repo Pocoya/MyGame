@@ -1,7 +1,7 @@
-com/mygdx/game/StarGenerator.java
- com.mygdx.game.StarGenerator
 com/mygdx/game/BackGroundStars.java
  com.mygdx.game.BackGroundStars
+com/mygdx/game/StarGenerator.java
+ com.mygdx.game.StarGenerator
 com/mygdx/game/Player.java
  com.mygdx.game.Player
 com/mygdx/game/HighScore.java
