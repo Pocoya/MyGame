@@ -35,11 +35,11 @@ public class StarGenerator
             int tmp = getRandomNumber(1,3);
             if(tmp == 1)
             {
-                speed = 150;
+                speed = 50;
             }
             else if(tmp == 2)
             {
-                speed = 200;
+                speed = 100;
             }
 
             stars.add(new BackGroundStars(texture, getRandomNumber(100, 1100), getRandomNumber(1, 650), speed, color));
@@ -83,11 +83,11 @@ public class StarGenerator
 
         if(tmpSpeed == 1)
         {
-            speed = 150;
+            speed = 50;
         }
         else if(tmpSpeed == 2)
         {
-            speed = 200;
+            speed = 100;
         }
         stars.add(new BackGroundStars(texture, (float)rng.nextDouble() * spawnWidth, -20, speed, color));
     }

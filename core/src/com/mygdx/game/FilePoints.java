@@ -21,8 +21,8 @@ public class FilePoints {
 
     public void writeToFile(int score){
         try {
-            try (PrintWriter fw = new PrintWriter(new FileWriter(fileName, true))){
-                fw.write(score);
+            try (PrintWriter fw = new PrintWriter(new FileWriter(fileName))){
+                fw.print(score);
             }
         } catch (Exception e) {
             e.printStackTrace();

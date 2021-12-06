@@ -49,10 +49,15 @@ public class Player extends MyGame
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE) && fireTime >= fireRate)
         {
             //INSTANTIATE BULLET
-            fireTime = 5;
+            fireTime = 0;
             GameScreen.bullets.add(new Bullet(movement.getPosX() + (int)shooter.getWidth()/5, movement.getPosY() + (int)shooter.getHeight()/2));
             points++;
             highScore.updateScore(points);
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.P)) {
+            highScore.updateScore(points);
+            highScore.Write();
         }
     }
 
