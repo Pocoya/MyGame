@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class StarGenerator
-{
+public class StarGenerator {
     Texture texture;
     float spawnWidth;
     float density;
@@ -23,22 +22,18 @@ public class StarGenerator
     int speed;
 
 
-    public StarGenerator(Texture newTexture, float aSpawnWidth, float aDensity)
-    {
+    public StarGenerator(Texture newTexture, float aSpawnWidth, float aDensity) {
         texture = newTexture;
         spawnWidth = aSpawnWidth;
         density = aDensity;
         rng = new Random();
 
-        for(int i = 0; i < 100; i++)
-        {
+        for(int i = 0; i < 100; i++) {
             int tmp = getRandomNumber(1,3);
-            if(tmp == 1)
-            {
+            if(tmp == 1) {
                 speed = 50;
             }
-            else if(tmp == 2)
-            {
+            else if(tmp == 2) {
                 speed = 100;
             }
 
@@ -46,47 +41,38 @@ public class StarGenerator
         }
     }
 
-    public void Update(float deltaTime)
-    {
+    public void Update(float deltaTime) {
         time += deltaTime;
 
-        while(time > 0)
-        {
+        while(time > 0) {
             time -= 1/density;
             CreateNewStar();
         }
 
-        for(int i = 0; i < stars.size(); i++)
-        {
+        for(int i = 0; i < stars.size(); i++) {
             stars.get(i).Update(deltaTime);
 
-            if(stars.get(i).GetPosY() > 750)
-            {
+            if(stars.get(i).GetPosY() > 750) {
                 stars.remove(i);
                 i--;
             }
         }
     }
 
-    public void Render(SpriteBatch batch)
-    {
-        for (BackGroundStars s: stars)
-        {
+    public void Render(SpriteBatch batch) {
+        for (BackGroundStars s: stars) {
            s.Draw(batch);
         }
     }
 
-    public void CreateNewStar()
-    {
+    public void CreateNewStar() {
         double any = rng.nextDouble();
         int tmpSpeed = getRandomNumber(1,3);
 
-        if(tmpSpeed == 1)
-        {
+        if(tmpSpeed == 1) {
             speed = 50;
         }
-        else if(tmpSpeed == 2)
-        {
+        else if(tmpSpeed == 2) {
             speed = 100;
         }
         stars.add(new BackGroundStars(texture, (float)rng.nextDouble() * spawnWidth, -20, speed, color));

@@ -51,19 +51,15 @@ public class GameScreen implements Screen {
     }
 
     // Put all logic here
-    void Update(float deltaTime)
-    {
+    void Update(float deltaTime) {
         ArrayList<Integer> tmp = new ArrayList<>();
         player.Update(deltaTime);
         gen.Update(deltaTime);
-        for (Bullet bul : bullets)
-        {
+        for (Bullet bul : bullets) {
             if(bul.isAlive) bul.Update(deltaTime);
         }
-        for(int i = 0; i < bullets.size(); i++)
-        {
-            if(!bullets.get(i).isAlive)
-            {
+        for(int i = 0; i < bullets.size(); i++) {
+            if(!bullets.get(i).isAlive) {
                 tmp.add(i);
             }
         }
@@ -89,8 +85,7 @@ public class GameScreen implements Screen {
         gen.Render(batch);
         player.Render(deltaTime, batch);
 
-        for (Bullet bul : bullets)
-        {
+        for (Bullet bul : bullets){
             if(bul.isAlive) bul.Render(deltaTime, batch);
         }
 

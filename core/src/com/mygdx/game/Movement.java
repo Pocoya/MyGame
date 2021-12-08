@@ -12,8 +12,7 @@ public class Movement extends MyGame{
         super();
     }
 
-    public void move(int aSpeed)
-    {
+    public void move(int aSpeed) {
         float deltaTime = Gdx.graphics.getDeltaTime();
         if(Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             posX += deltaTime * aSpeed;

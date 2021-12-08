@@ -14,8 +14,7 @@ public class BackGroundStars
 
     Color myColor;
 
-    public BackGroundStars(Texture aTexture, float aNewPosX, float aNewPosY, int aNewVel, Color aColor)
-    {
+    public BackGroundStars(Texture aTexture, float aNewPosX, float aNewPosY, int aNewVel, Color aColor) {
         myTexture = new Sprite(aTexture);
         myPosY = aNewPosY;
         myPosX = aNewPosX;
@@ -26,18 +25,15 @@ public class BackGroundStars
     }
 
 
-    public float GetPosY()
-    {
+    public float GetPosY() {
         return myPosY;
     }
-    public void Update(float deltaTime)
-    {
+    public void Update(float deltaTime) {
         myPosY += myVelocity * deltaTime;
         myTexture.setPosition(myTexture.getX(), myPosY);
     }
 
-    public void Draw(SpriteBatch aSpriteBatch)
-    {
+    public void Draw(SpriteBatch aSpriteBatch) {
         myTexture.draw(aSpriteBatch);
     }
 }
