@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     //Graphics
     private final SpriteBatch batch;
     private final Texture background;
-    private BitmapFont font;
+    private final BitmapFont font;
 
     //Timing
     private int backgrTimer;
@@ -36,6 +36,8 @@ public class GameScreen implements Screen {
     Player player;
     StarGenerator gen;
 
+    Enemy enemy;
+
     public static ArrayList<Bullet> bullets = new ArrayList<>();
 
     GameScreen(){
@@ -48,6 +50,9 @@ public class GameScreen implements Screen {
         font = new BitmapFont();
         player = new Player();
         gen = new StarGenerator(new Texture("star.jpeg"), WORLD_WIDTH, 25);
+
+
+        enemy = new Enemy();
     }
 
     // Put all logic here
@@ -55,6 +60,10 @@ public class GameScreen implements Screen {
         ArrayList<Integer> tmp = new ArrayList<>();
         player.Update(deltaTime);
         gen.Update(deltaTime);
+
+        enemy.Update(deltaTime);
+
+
         for (Bullet bul : bullets) {
             if(bul.isAlive) bul.Update(deltaTime);
         }
@@ -84,6 +93,7 @@ public class GameScreen implements Screen {
 
         gen.Render(batch);
         player.Render(deltaTime, batch);
+        enemy.Render(deltaTime, batch);
 
         for (Bullet bul : bullets){
             if(bul.isAlive) bul.Render(deltaTime, batch);

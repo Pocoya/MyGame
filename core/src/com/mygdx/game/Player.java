@@ -8,10 +8,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import javax.swing.*;
-import java.io.File;
 
 public class Player extends MyGame {
-    private int speed = 200;
     private int health;
     private int points;
     Sprite shooter;
@@ -33,11 +31,12 @@ public class Player extends MyGame {
         getPlayerName();
     }
 
-    public String getPlayerName(){
-        return playerName = JOptionPane.showInputDialog("Name: ");
+    public void getPlayerName(){
+        playerName = JOptionPane.showInputDialog("Name: ");
     }
 
     public void Update(float deltaTime) {
+        int speed = 200;
         movement.move(speed);
         shooter.setPosition(movement.getPosX(), movement.getPosY());
         fireTime += deltaTime;
