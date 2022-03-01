@@ -36,9 +36,8 @@ public class GameScreen implements Screen {
     Player player;
     StarGenerator gen;
 
-    Enemy enemy;
-
     public static ArrayList<Bullet> bullets = new ArrayList<>();
+    public static ArrayList<Enemy> enemies = new ArrayList<>();
 
     GameScreen(){
         camera = new OrthographicCamera();
@@ -51,17 +50,40 @@ public class GameScreen implements Screen {
         player = new Player();
         gen = new StarGenerator(new Texture("star.jpeg"), WORLD_WIDTH, 25);
 
+        SpawnEnemies();
 
-        enemy = new Enemy();
+    }
+
+    void SpawnEnemies()
+    {
+        int offset = 40;
+        for(int i = 0; i < 10; i++)
+        {
+            enemies.add(new Enemy(500+offset*i, 500));
+        }
+
     }
 
     // Put all logic here
     void Update(float deltaTime) {
-        ArrayList<Integer> tmp = new ArrayList<>();
+        ArrayList<Integer> tmpBul = new ArrayList<>();
+        ArrayList<Integer> tmpEn = new ArrayList<>();
         player.Update(deltaTime);
         gen.Update(deltaTime);
 
-        enemy.Update(deltaTime);
+        for (Enemy en : enemies) {
+            if(en.isAlive) en.Update(deltaTime);
+        }
+        for(int i = 0; i < enemies.size(); i++) {
+            if(!enemies.get(i).isAlive) {
+                tmpEn.add(i);
+            }
+        }
+        for (int j : tmpEn) {
+            System.out.println(j);
+            System.out.println(enemies.get(j));
+            enemies.remove(j);
+        }
 
 
         for (Bullet bul : bullets) {
@@ -69,10 +91,10 @@ public class GameScreen implements Screen {
         }
         for(int i = 0; i < bullets.size(); i++) {
             if(!bullets.get(i).isAlive) {
-                tmp.add(i);
+                tmpBul.add(i);
             }
         }
-        for (int j : tmp) {
+        for (int j : tmpBul) {
             bullets.remove(j);
         }
     }
@@ -93,10 +115,12 @@ public class GameScreen implements Screen {
 
         gen.Render(batch);
         player.Render(deltaTime, batch);
-        enemy.Render(deltaTime, batch);
 
         for (Bullet bul : bullets){
             if(bul.isAlive) bul.Render(deltaTime, batch);
+        }
+        for (Enemy en : enemies){
+            if(en.isAlive) en.Render(deltaTime, batch);
         }
 
         font.setColor(Color.PINK);

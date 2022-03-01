@@ -10,6 +10,7 @@ public class Bullet extends MyGame {
     Sprite bullet;
     private int posY;
     private float timeAlive;
+    private float speed = 300;
 
     boolean isAlive = true;
 
@@ -22,7 +23,7 @@ public class Bullet extends MyGame {
     public void Update(float deltaTime) {
         timeAlive += deltaTime;
         // fly straight up, delete if not hit in long time.
-        posY += 150 * deltaTime;
+        posY += speed * deltaTime;
         bullet.setPosition(bullet.getX(), posY);
 
         if(timeAlive > 4) {
@@ -34,5 +35,10 @@ public class Bullet extends MyGame {
         bullet.setSize(35,20);
         bullet.setColor(Color.GRAY);
         bullet.draw(batch);
+    }
+
+    public Sprite getSprite()
+    {
+        return bullet;
     }
 }

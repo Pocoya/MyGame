@@ -13,23 +13,36 @@ public class Enemy {
     int maxX = 1000;
     int lowX = 100;
 
-    int maxY = 700;
     int lowY = 100;
 
     float speed = 100;
 
     float posX;
     float posY;
-    public Enemy() {
+
+    boolean isAlive = true;
+    public Enemy(int aPosX, int aPosY) {
         sprite = new Sprite(new Texture("shooter.jpeg"));
-        sprite.setPosition(500, 500);
+        sprite.setPosition(aPosX, aPosY);
         posX = sprite.getX();
         posY = sprite.getY();
     }
 
-    public void Update(float deltaTime) {
+    public void Update(float deltaTime)
+    {
         Movement(deltaTime);
+
+
+        for(Bullet bul : GameScreen.bullets)
+        {
+            if(bul.getSprite().getBoundingRectangle().overlaps(sprite.getBoundingRectangle()))
+            {
+                isAlive = false;
+                bul.isAlive = false;
+            }
+        }
     }
+
 
     public void Movement(float deltaTime) {
         posX += speed * deltaTime;

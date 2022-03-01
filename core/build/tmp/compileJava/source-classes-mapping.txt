@@ -1,11 +1,13 @@
 com/mygdx/game/BackGroundStars.java
  com.mygdx.game.BackGroundStars
-com/mygdx/game/Player.java
- com.mygdx.game.Player
+com/mygdx/game/StarGenerator.java
+ com.mygdx.game.StarGenerator
 com/mygdx/game/HighScore.java
  com.mygdx.game.HighScore
 com/mygdx/game/FilePoints.java
  com.mygdx.game.FilePoints
+com/mygdx/game/Player.java
+ com.mygdx.game.Player
 com/mygdx/game/MyGame.java
  com.mygdx.game.MyGame
 com/mygdx/game/Movement.java
@@ -16,5 +18,3 @@ com/mygdx/game/Bullet.java
  com.mygdx.game.Bullet
 com/mygdx/game/Enemy.java
  com.mygdx.game.Enemy
-com/mygdx/game/StarGenerator.java
- com.mygdx.game.StarGenerator
